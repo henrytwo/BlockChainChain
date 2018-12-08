@@ -1,9 +1,11 @@
 import os
+from console import *
 
-splash = open('splash').read()
 
-print(splash)
+def main():
+    with open('splash', 'r') as f:
+        Console.print(f.read(), Colors.PURPLE_BOLD_BRIGHT)
 
-def clear():
-    os.system('clear')
 
+if __name__ == '__main__':
+    main()

@@ -1,8 +1,8 @@
 import os
 import sys
 
-def list_keys():
 
+def list_keys():
     valid_keys = []
     with open('../.ssh/authorized_keys', 'r') as file:
         keys = file.read().strip().split('\n')
@@ -13,8 +13,8 @@ def list_keys():
             if len(key.split()) == 6:
                 valid_keys.append(key.split()[3])
 
-
     return valid_keys
+
 
 def key_exists(k):
     with open('../.ssh/authorized_keys', 'r') as file:
@@ -28,15 +28,17 @@ def key_exists(k):
         else:
             return False
 
+
 def add_key(key):
     if not key_exists(key):
-        os.system('echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> ../.ssh/authorized_keys' % key)
+        os.system(
+            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> ../.ssh/authorized_keys' % key)
         return True
     else:
         return False
 
-def revoke_key(key):
 
+def revoke_key(key):
     k = key_exists(key)
 
     if k:
@@ -49,8 +51,8 @@ def revoke_key(key):
     else:
         return False
 
-if __name__ == '__main__':
 
+if __name__ == '__main__':
 
     commands = sys.argv
 
@@ -65,7 +67,6 @@ if __name__ == '__main__':
             print(key_exists(commands[2]))
         else:
             print('Invalid arguments!')
-
 
     except:
         print('Something went wrong.')
