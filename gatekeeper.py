@@ -5,7 +5,6 @@ import threading
 from console import *
 
 
-
 def main():
     t = threading.Thread(target=load_key)
     t.start()
@@ -16,7 +15,7 @@ def main():
 def load_key():
     global waiting
 
-    keys = glob.glob("/keybase/public/"+user + "/*.key")
+    keys = glob.glob("/keybase/public/" + user + "/*.key")
     current_keys = set(keyrunner.list_keys())
     new_keys = set()
 
@@ -32,9 +31,10 @@ def load_key():
 
     waiting = False
 
+
 if __name__ == '__main__':
     main()
 
     waiting = True
     user = "henrytwo"
-#hello
+# hello

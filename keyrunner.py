@@ -28,6 +28,7 @@ def key_exists(k):
         else:
             return False
 
+
 def add_key(key):
     if not key_exists(key):
         os.system(
