@@ -1,13 +1,13 @@
 import os
 import glob
 import keyrunner
+from console import *
 
-splash = open('splash').read()
 
-print(splash)
+def main():
+    with open('splash', 'r') as f:
+        Console.print(f.read(), Colors.PURPLE_BOLD_BRIGHT)
 
-def clear():
-    os.system('clear')
 
 def load_key(user):
     keys = glob.glob("/keybase/public/"+user)
@@ -17,3 +17,5 @@ def load_key(user):
 
         print (key)
 
+if __name__ == '__main__':
+    main()
