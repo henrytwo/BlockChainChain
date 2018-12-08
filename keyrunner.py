@@ -34,7 +34,7 @@ def list_keys():
     return valid_keys
 
 
-def key_exists(k):
+def key_exists(k, raw=False):
     with open(home + '/.ssh/authorized_keys', 'r') as file:
         keys = file.read().strip().split('\n')
 
@@ -42,7 +42,10 @@ def key_exists(k):
             key = keys[i]
 
             try:
-                reference_key = sha256frompubkey.sha256_fingerprint_from_pub_key(key.split()[4])
+                if not raw:
+                    reference_key = sha256frompubkey.sha256_fingerprint_from_pub_key(key.split()[4])
+                else:
+                    reference_key = key
 
                 #print('A:' + k, 'B:' + reference_key)
 
@@ -55,7 +58,7 @@ def key_exists(k):
 
 
 def add_key(key):
-    if not key_exists(key):
+    if not key_exists(key, True):
         os.system(
             'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> ~/.ssh/authorized_keys' % key)
         return True
@@ -64,7 +67,7 @@ def add_key(key):
 
 
 def revoke_key(key):
-    k = key_exists(key)
+    k = key_exists(key, True)
 
     if k:
         del k[0][k[1]]
