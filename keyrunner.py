@@ -1,5 +1,20 @@
 import os
 import sys
+from console import *
+import subprocess
+import sha256frompubkey
+
+def check_key():
+    with open('/var/log/auth.log') as file:
+        log = file.read().strip().split('\n')[::-1]
+
+        for line in log:
+            if 'RSA SHA256' in line:
+                raw_key = line.split()[-1]
+
+                Console.print('SHA256 FINGERPRINT: %s' % raw_key, Colors.RED_BOLD)
+
+                return key_exists(raw_key)
 
 
 def list_keys():
@@ -23,7 +38,11 @@ def key_exists(k):
         for i in range(len(keys)):
             key = keys[i]
 
-            if len(key.split()) == 6 and k in key.split()[4]:
+            reference_key = sha256frompubkey.sha256_fingerprint_from_pub_key(key.split()[4])
+
+            #print('A:' + k, 'B:' + reference_key)
+
+            if len(key.split()) == 6 and k == reference_key:
                 return [keys, i]
         else:
             return False
