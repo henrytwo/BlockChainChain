@@ -15,4 +15,7 @@ class Andrewino:
 
     def unlock(self):
         self.s.write(b'unlock')
+        
+    def status(self):
+        self.s.write(b'status')
 
