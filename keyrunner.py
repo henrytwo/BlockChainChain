@@ -10,7 +10,7 @@ def list_keys():
         for i in range(len(keys)):
             key = keys[i]
 
-            if len(key.split()) == 4:
+            if len(key.split()) == 6:
                 valid_keys.append(key.split()[3])
 
 
@@ -23,7 +23,7 @@ def key_exists(k):
         for i in range(len(keys)):
             key = keys[i]
 
-            if len(key.split()) == 4 and k in key.split()[3]:
+            if len(key.split()) == 6 and k in key.split()[4]:
                 return [keys, i]
         else:
             return False
@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     try:
         if commands[1] == 'add':
-            print(add_key(commands[2]))
+            print(add_key(' '.join(commands[2:])))
         elif commands[1] == 'revoke':
             print(revoke_key(commands[2]))
         elif commands[1] == 'list':
