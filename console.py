@@ -95,23 +95,23 @@ class Console:
     @staticmethod
     def splash():
         Console.print(
-            "        _____  _            _     _____ _           _        _____ _           _\n" + \
-            "        |  _ \| |          | |   / ____| |         (_)      / ____| |         (_)\n" + \
-            "        | |_) | | ___   ___| | _| |    | |__   __ _ _ _ __ | |    | |__   __ _ _ _ __\n" + \
-            "        |  _ <| |/ _ \ / __| |/ / |    | '_ \ / _` | | '_ \| |    | '_ \ / _` | | '_ \\\n" + \
-            "        | |_) | | (_) | (__|   <| |____| | | | (_| | | | | | |____| | | | (_| | | | | |\n" + \
+            "        _____  _            _     _____ _           _        _____ _           _\n" +
+            "        |  _ \| |          | |   / ____| |         (_)      / ____| |         (_)\n" +
+            "        | |_) | | ___   ___| | _| |    | |__   __ _ _ _ __ | |    | |__   __ _ _ _ __\n" +
+            "        |  _ <| |/ _ \ / __| |/ / |    | '_ \ / _` | | '_ \| |    | '_ \ / _` | | '_ \\\n" +
+            "        | |_) | | (_) | (__|   <| |____| | | | (_| | | | | | |____| | | | (_| | | | | |\n" +
             "        |____/|_|\___/ \___|_|\_\\\_____|_| |_|\__,_|_|_| |_|\_____|_| |_|\__,_|_|_| |_|\n",
             Colors.BLACK_BOLD)
 
         Console.print(
-            "               _,aaaaaaaaaaaaaaaaaaa,_                _,aaaaaaaaaaaaaaaaaaa,_\n" + \
-            "              ,P'                     'Y,            ,P'                     'Y,\n" + \
-            "             d'    ,aaaaaaaaaaaaaaa,    `b          d'    ,aaaaaaaaaaaaaaa,    `b\n" + \
-            "            d'   ,d'            ,aaabaaaa8aaaaaaaaaa8aaaadaaa,            'b,   `b\n" + \
-            "            I    I              I                            I              I    I\n" + \
-            "            Y,   `Y,            `aaaaaaaaaaaaaaaaaaaaaaaaaaaa'            ,P'   ,P\n" + \
-            "             Y,   `baaaaaaaaaaaaaaad'   ,P          Y,   `baaaaaaaaaaaaaad'   ,P\n" + \
-            "              `b,                     ,d'            `b,                     ,d'\n" + \
+            "               _,aaaaaaaaaaaaaaaaaaa,_                _,aaaaaaaaaaaaaaaaaaa,_\n" +
+            "              ,P'                     'Y,            ,P'                     'Y,\n" +
+            "             d'    ,aaaaaaaaaaaaaaa,    `b          d'    ,aaaaaaaaaaaaaaa,    `b\n" +
+            "            d'   ,d'            ,aaabaaaa8aaaaaaaaaa8aaaadaaa,            'b,   `b\n" +
+            "            I    I              I                            I              I    I\n" +
+            "            Y,   `Y,            `aaaaaaaaaaaaaaaaaaaaaaaaaaaa'            ,P'   ,P\n" +
+            "             Y,   `baaaaaaaaaaaaaaad'   ,P          Y,   `baaaaaaaaaaaaaad'   ,P\n" +
+            "              `b,                     ,d'            `b,                     ,d'\n" +
             "                `baaaaaaaaaaaaaaaaaaad'                `baaaaaaaaaaaaaaaaaaad'\n",
             Colors.BLACK_BOLD_BRIGHT)
 

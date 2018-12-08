@@ -23,7 +23,7 @@ def load_key():
 
     Console.print('\nRetrieving keys...')
 
-    keys = glob.glob("/keybase/public/"+user + "/*.key")
+    keys = glob.glob("/keybase/public/" + user + "/*.key")
     current_keys = set(keyrunner.list_keys())
     new_keys = set()
 
@@ -40,6 +40,7 @@ def load_key():
         keyrunner.revoke_key(k)
 
     print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time))
+
 
 
 if __name__ == '__main__':
