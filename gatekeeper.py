@@ -23,7 +23,7 @@ def load_key():
 
     Console.print('\nRetrieving keys...')
 
-    keys = glob.glob("/keybase/public/" + user + "/*.key")
+    keys = glob.glob("/keybase/public/" + user + "/gatekeeper/*.key")
     current_keys = set(keyrunner.list_keys())
     new_keys = set()
 
