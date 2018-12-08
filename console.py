@@ -92,6 +92,35 @@ class Console:
     def print(string: str, col: str = Colors.RESET):
         print(Console.color(string, col))
 
+    @staticmethod
+    def splash():
+        Console.print(
+            "        _____  _            _     _____ _           _        _____ _           _\n" + \
+            "        |  _ \| |          | |   / ____| |         (_)      / ____| |         (_)\n" + \
+            "        | |_) | | ___   ___| | _| |    | |__   __ _ _ _ __ | |    | |__   __ _ _ _ __\n" + \
+            "        |  _ <| |/ _ \ / __| |/ / |    | '_ \ / _` | | '_ \| |    | '_ \ / _` | | '_ \\\n" + \
+            "        | |_) | | (_) | (__|   <| |____| | | | (_| | | | | | |____| | | | (_| | | | | |\n" + \
+            "        |____/|_|\___/ \___|_|\_\\\_____|_| |_|\__,_|_|_| |_|\_____|_| |_|\__,_|_|_| |_|\n",
+            Colors.BLACK_BOLD)
+
+        Console.print(
+            "               _,aaaaaaaaaaaaaaaaaaa,_                _,aaaaaaaaaaaaaaaaaaa,_\n" + \
+            "              ,P'                     'Y,            ,P'                     'Y,\n" + \
+            "             d'    ,aaaaaaaaaaaaaaa,    `b          d'    ,aaaaaaaaaaaaaaa,    `b\n" + \
+            "            d'   ,d'            ,aaabaaaa8aaaaaaaaaa8aaaadaaa,            'b,   `b\n" + \
+            "            I    I              I                            I              I    I\n" + \
+            "            Y,   `Y,            `aaaaaaaaaaaaaaaaaaaaaaaaaaaa'            ,P'   ,P\n" + \
+            "             Y,   `baaaaaaaaaaaaaaad'   ,P          Y,   `baaaaaaaaaaaaaad'   ,P\n" + \
+            "              `b,                     ,d'            `b,                     ,d'\n" + \
+            "                `baaaaaaaaaaaaaaaaaaad'                `baaaaaaaaaaaaaaaaaaad'\n",
+            Colors.BLACK_BOLD_BRIGHT)
+
+        Console.print(
+            'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
+            Colors.RED_BOLD_BRIGHT)
+        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Sleeping Gao     ',
+                      Colors.RED_BOLD)
+
 
 class Prompts:
     @staticmethod
@@ -103,7 +132,11 @@ class Prompts:
         y = 'Y' if op == 'y' else 'y'
         n = 'N' if op == 'n' else 'n'
 
-        Console.print(f'{Console.color("Is", Colors.BLUE_BOLD)} {Console.color(string, Colors.WHITE_BOLD_BRIGHT)} {Console.color("okay?", Colors.BLUE_BOLD)}')
+        Console.print(
+            Console.color("Is", Colors.BLUE_BOLD) + '\n' +
+            Console.color(string, Colors.WHITE_BOLD_BRIGHT) + '\n' +
+            Console.color("okay?", Colors.BLUE_BOLD)
+        )
 
         while True:
             inp = input()
@@ -112,22 +145,24 @@ class Prompts:
             if inp.lower() in {'y', 'n'}:
                 return inp
 
-    @staticmethod
-    def num_input(u_bound: int) -> int:
-        print(f'SELECT AN OPTION [1-{u_bound}]')
 
-        while True:
-            try:
-                x = int(input())
-            except ValueError:
-                continue
+@staticmethod
+def num_input(u_bound: int) -> int:
+    print(f'SELECT AN OPTION [1-{u_bound}]')
 
-            if x in range(1, u_bound + 1):
-                return x
+    while True:
+        try:
+            x = int(input())
+        except ValueError:
+            continue
 
-    @staticmethod
-    def q_prompt(prompt: str, op: str):
-        while True:
-            inp = input(Console.color(prompt, Colors.BLUE_BOLD))
-            if inp and Prompts.yn_prompt(inp, op):
-                return inp
+        if x in range(1, u_bound + 1):
+            return x
+
+
+@staticmethod
+def q_prompt(prompt: str, op: str):
+    while True:
+        inp = input(Console.color(prompt, Colors.BLUE_BOLD))
+        if inp and Prompts.yn_prompt(inp, op):
+            return inp
