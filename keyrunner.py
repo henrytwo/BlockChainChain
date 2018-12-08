@@ -29,7 +29,7 @@ def list_keys():
             key = keys[i]
 
             if len(key.split()) == 6:
-                valid_keys.append(key.split()[3])
+                valid_keys.append(' '.join(key.split()[3:]))
 
     return valid_keys
 
