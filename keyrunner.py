@@ -2,7 +2,10 @@ import os
 import sys
 from console import *
 import subprocess
+import traceback
 import sha256frompubkey
+from os.path import expanduser
+home = expanduser("~")
 
 def check_key():
     with open('/var/log/auth.log') as file:
@@ -19,7 +22,7 @@ def check_key():
 
 def list_keys():
     valid_keys = []
-    with open('../.ssh/authorized_keys', 'r') as file:
+    with open(home + '/.ssh/authorized_keys', 'r') as file:
         keys = file.read().strip().split('\n')
 
         for i in range(len(keys)):
@@ -32,18 +35,21 @@ def list_keys():
 
 
 def key_exists(k):
-    with open('../.ssh/authorized_keys', 'r') as file:
+    with open(home + '/.ssh/authorized_keys', 'r') as file:
         keys = file.read().strip().split('\n')
 
         for i in range(len(keys)):
             key = keys[i]
 
-            reference_key = sha256frompubkey.sha256_fingerprint_from_pub_key(key.split()[4])
+            try:
+                reference_key = sha256frompubkey.sha256_fingerprint_from_pub_key(key.split()[4])
 
-            #print('A:' + k, 'B:' + reference_key)
+                #print('A:' + k, 'B:' + reference_key)
 
-            if len(key.split()) == 6 and k == reference_key:
-                return [keys, i]
+                if len(key.split()) == 6 and k == reference_key:
+                    return [keys, i]
+            except:
+                pass
         else:
             return False
 
@@ -51,7 +57,7 @@ def key_exists(k):
 def add_key(key):
     if not key_exists(key):
         os.system(
-            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> ../.ssh/authorized_keys' % key)
+            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> ~/.ssh/authorized_keys' % key)
         return True
     else:
         return False
@@ -63,7 +69,7 @@ def revoke_key(key):
     if k:
         del k[0][k[1]]
 
-        with open('../.ssh/authorized_keys', 'w') as file:
+        with open(home + '/.ssh/authorized_keys', 'w') as file:
             file.write('\n'.join(k[0]))
 
         return True
@@ -89,3 +95,4 @@ if __name__ == '__main__':
 
     except:
         print('Something went wrong.')
+        traceback.print_exc()

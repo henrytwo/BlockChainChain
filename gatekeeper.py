@@ -14,7 +14,7 @@ def main():
     if keyrunner.check_key():
         Console.print('wooo u auth', Colors.YELLOW)
     else:
-        Console.print('\nAccess denied. Key has been revoked.', Colors.RED_BOLD)
+        Console.print('\nAccess denied! This key has been revoked.\nContact the owner securely over keybase for further instructions. (@%s)' % user, Colors.RED_BOLD)
 
 
 def load_key():
