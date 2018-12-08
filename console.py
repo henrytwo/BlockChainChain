@@ -145,24 +145,22 @@ class Prompts:
             if inp.lower() in {'y', 'n'}:
                 return inp
 
+    @staticmethod
+    def num_input(u_bound: int) -> int:
+        print(f'SELECT AN OPTION [1-{u_bound}]')
 
-@staticmethod
-def num_input(u_bound: int) -> int:
-    print(f'SELECT AN OPTION [1-{u_bound}]')
+        while True:
+            try:
+                x = int(input())
+            except ValueError:
+                continue
 
-    while True:
-        try:
-            x = int(input())
-        except ValueError:
-            continue
+            if x in range(1, u_bound + 1):
+                return x
 
-        if x in range(1, u_bound + 1):
-            return x
-
-
-@staticmethod
-def q_prompt(prompt: str, op: str):
-    while True:
-        inp = input(Console.color(prompt, Colors.BLUE_BOLD))
-        if inp and Prompts.yn_prompt(inp, op):
-            return inp
+    @staticmethod
+    def q_prompt(prompt: str, op: str):
+        while True:
+            inp = input(Console.color(prompt, Colors.BLUE_BOLD))
+            if inp and Prompts.yn_prompt(inp, op):
+                return inp
