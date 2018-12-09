@@ -85,8 +85,8 @@ class Colors:
 class Console:
     @staticmethod
     def clear():
-        pass
-        #print('\033[H\033[2J')
+        #pass
+        print('\033[H\033[2J')
 
     @staticmethod
     def color(string: str, col: str) -> str:
