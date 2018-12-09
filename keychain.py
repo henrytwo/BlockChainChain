@@ -1,7 +1,7 @@
 import os
 import sys
 from console import *
-import gatekeeper
+import bcc_main
 import time
 import glob
 import traceback
@@ -72,7 +72,7 @@ def add_key(key):
     if not key_exists(key):
         dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'ADD-KEY')
         os.system(
-            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
+            'echo \'command="python3 BlockChainChain/bcc_main.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
             key, home))
         return True
     else:
@@ -99,7 +99,7 @@ def load_key(persist=False):
 
     Console.print('\nRetrieving keys...\n', Colors.BLACK_BOLD)
 
-    keys = glob.glob("/keybase/public/" + gatekeeper.user + "/gatekeeper/*")
+    keys = glob.glob("/keybase/public/" + bcc_main.user + "/gatekeeper/*")
     current_keys = set(list_keys())
     new_keys = set()
 
