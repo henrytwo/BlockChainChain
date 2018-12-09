@@ -1,3 +1,5 @@
+from typing import *
+
 class Colors:
     RESET = "\033[0m"
 
@@ -123,6 +125,13 @@ class Console:
 
 
 class Prompts:
+    # my_stuff =
+    # "╔═══╦═══╦═══╗" +
+    # "║   ║   ║   ║" +
+    # "╠═══╬═══╬═══╣" +
+    # "║   ║   ║   ║" +
+    # "╚═══╩═══╩═══╝"
+
     @staticmethod
     def cn_prompt():
         Console.print('Press ENTER to continue...', Colors.BLACK_BOLD_BRIGHT)
@@ -147,7 +156,7 @@ class Prompts:
 
     @staticmethod
     def num_input(u_bound: int) -> int:
-        print(f'SELECT AN OPTION [1-{u_bound}]')
+        Console.print(f'SELECT AN OPTION [1-{u_bound}]', Colors.CYAN_BOLD)
 
         while True:
             try:
@@ -164,3 +173,17 @@ class Prompts:
             inp = input(Console.color(prompt, Colors.BLUE_BOLD))
             if inp and Prompts.yn_prompt(inp, op):
                 return inp
+
+
+class MenuFormatter:
+    @staticmethod
+    def option_list(options: Union[List[str], Dict[str, str]]) -> int:
+        if type(options) is list:
+            options = {x: Colors.BLACK_BOLD for x in options}
+
+        Console.print(f'╔═══╦{"═"*15}╗', Colors.BLACK_BOLD)
+        for i, (option, col) in enumerate(options.items(), 1):
+            Console.print(f'║ {i} ║ {option:<13} ║', col)
+        Console.print(f'╚═══╩{"═" * 15}╝', Colors.BLACK_BOLD)
+
+        return Prompts.num_input(len(options))
