@@ -184,7 +184,7 @@ class MenuFormatter:
         Console.print('         Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao    \n',
                       Colors.RED_BOLD)
 
-        Prompts.cn_prompt()
+        #Prompts.cn_prompt()
 
     @staticmethod
     def option_list(options: Union[List[str], Dict[str, str]]) -> int:

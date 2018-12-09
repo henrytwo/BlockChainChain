@@ -19,7 +19,7 @@ def log(key: str, typ: str):
         data = json.load(f)
         data.append({
             "key": key,
-            "keyname": KeyScraper.keynames[key],
+            "keyname": KeyScraper.keynames[key] if key in KeyScraper.keynames else 'N/A',
             "timestamp": datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
             "type": typ
         })
