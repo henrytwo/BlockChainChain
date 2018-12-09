@@ -32,9 +32,12 @@ def clear_log():
 
 
 def print_log():
+    Console.clear()
+
     with open('log.json', mode='r+', encoding='utf-8') as f:
         data = json.load(f)
 
+    Console.print('BLOCKCHAINCHAIN SYSTEM LOG')
     Console.print(f'╔═{"═" * 50}═╦═{"═" * 19}═╦═{"═" * 12}═╗', Colors.BLACK_BOLD)
     Console.print(f'║ {"Key":<50} ║ {"Timestamp":19} ║ {"Type":12} ║', Colors.BLACK_BOLD)
     Console.print(f'╠═{"═" * 50}═╬═{"═" * 19}═╬═{"═" * 12}═╣', Colors.BLACK_BOLD)

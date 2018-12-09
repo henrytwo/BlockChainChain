@@ -108,17 +108,18 @@ class Prompts:
 
     @staticmethod
     def cn_prompt():
-        Console.print('Press ENTER to continue...', Colors.BLACK_BOLD_BRIGHT)
+        Console.print('Press ENTER to continue...', Colors.RED)
+        input()
 
     @staticmethod
     def yn_prompt(string: str, op: str):
         y = 'Y' if op == 'y' else 'y'
         n = 'N' if op == 'n' else 'n'
 
+        Console.clear()
+
         Console.print(
-            Console.color("Is", Colors.BLUE_BOLD) + '\n' +
-            Console.color(string, Colors.WHITE_BOLD_BRIGHT) + '\n' +
-            Console.color("okay?", Colors.BLUE_BOLD)
+            Console.color(string + ' [%s/%s]' % (y, n), Colors.RED)
         )
 
         while True:
@@ -136,10 +137,13 @@ class Prompts:
             try:
                 x = int(input())
             except ValueError:
+                Console.print('Invalid input.', Colors.RED)
                 continue
 
             if x in range(1, u_bound + 1):
                 return x
+            else:
+                Console.print('Invalid input.', Colors.RED)
 
     @staticmethod
     def q_prompt(prompt: str, op: str):
