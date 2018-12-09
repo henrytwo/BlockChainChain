@@ -25,6 +25,11 @@ def log(key: str, timestamp: str, typ: str, action: str):
         f.truncate()
 
 
+def clear_log():
+    with open('log.json', 'w') as f:
+        json.dump([], f)
+
+
 def print_log():
     with open('log.json', mode='r+', encoding='utf-8') as f:
         data = json.load(f)
@@ -40,6 +45,7 @@ def print_log():
 
 
 if __name__ == '__main__':
+    clear_log()
     log('one', '1', 'lock/unlock', 'heh')
     log('two', '2', 'add-key', 'heh')
     log('three', '3', 'revoke-key', 'heh')
