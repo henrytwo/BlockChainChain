@@ -5,7 +5,7 @@ data_colors = {
     'lock/unlock': Colors.BLUE_BOLD_BRIGHT,
     'add-key': Colors.YELLOW_BOLD_BRIGHT,
     'revoke-key': Colors.BLACK_BOLD_BRIGHT,
-    'login': Colors.CYAN_BOLD,
+    'login': Colors.CYAN_BOLD_BRIGHT,
     'kick': Colors.RED_BOLD_BRIGHT
 }
 
