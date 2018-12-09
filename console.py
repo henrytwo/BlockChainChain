@@ -96,8 +96,6 @@ class Console:
         print(Console.color(string, col))
 
 
-
-
 class Prompts:
     # my_stuff =
     # "╔═══╦═══╦═══╗" +

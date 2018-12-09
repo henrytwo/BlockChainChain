@@ -6,6 +6,7 @@ import traceback
 serial_disabled = False
 locked = True
 
+
 class Andrewino:
     def __init__(self, id):
 
@@ -16,7 +17,7 @@ class Andrewino:
         except:
             self.s = None
             serial_disabled = True
-            #traceback.print_exc()
+            # traceback.print_exc()
             print('Serial disabled.')
 
     def lock(self, key):
@@ -29,6 +30,7 @@ class Andrewino:
         else:
             locked = True
             print('LOCK! (SERIAL OFFLINE)')
+
     def unlock(self, key):
         global locked
 
@@ -39,7 +41,7 @@ class Andrewino:
         else:
             locked = False
             print('LOCK! (SERIAL OFFLINE)')
-        
+
     def status(self):
         global locked
 
@@ -51,5 +53,3 @@ class Andrewino:
         else:
             print('STATUS! (SERIAL OFFLINE)')
             return locked
-
-

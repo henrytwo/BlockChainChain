@@ -49,7 +49,6 @@ def list_keys():
 
 
 def key_exists(k):
-
     keys = list_keys()
 
     for i in range(len(keys)):
@@ -73,7 +72,8 @@ def add_key(key):
     if not key_exists(key):
         dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'ADD-KEY')
         os.system(
-            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (key, home))
+            'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
+            key, home))
         return True
     else:
         return False
@@ -93,20 +93,18 @@ def revoke_key(key):
     else:
         return False
 
-def load_key(persist = False):
 
+def load_key(persist=False):
     old_time = time.time()
 
-    Console.print('\nRetrieving keys...\n')
+    Console.print('\nRetrieving keys...\n', Colors.BLACK_BOLD)
 
     keys = glob.glob("/keybase/public/" + gatekeeper.user + "/gatekeeper/*")
     current_keys = set(list_keys())
     new_keys = set()
 
-    Console.print('Loading keys...')
-    Console.print('%i key(s) loaded.\n' % len(keys))
-
-    #print(keys)
+    Console.print('Loading keys...', Colors.BLUE_BOLD)
+    Console.print('%i key(s) loaded.\n' % len(keys), Colors.CYAN_BOLD)
 
     for key in keys:
         key = open(key).read().strip()
@@ -117,15 +115,13 @@ def load_key(persist = False):
             Console.print('[+] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(key), Colors.GREEN_BOLD)
             add_key(key)
 
-    #print('cur', current_keys,'\n\nnew ', new_keys, '\n\nas', current_keys - new_keys)
-
     # So revokes are verbose
     if not persist:
         for r in current_keys - new_keys:
             Console.print('[-] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(r), Colors.RED)
             revoke_key(r)
 
-    print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time))
+    Console.print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time), Colors.BOLD)
 
 
 if __name__ == '__main__':
