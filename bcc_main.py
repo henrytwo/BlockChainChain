@@ -35,7 +35,9 @@ def main():
 
     global locked
 
-    andrew = serialgao.Andrewino('/dev/ttyACM2')
+    andrew = serialgao.Andrewino('/dev/ttyACM0')
+
+    locked = andrew.status()
 
     Console.clear()
 

@@ -12,12 +12,15 @@ class Andrewino:
 
         global serial_disabled
 
+        print('Hello')
+
         try:
             self.s = serial.Serial(id)
+            print('Serial connected!')
         except:
             self.s = None
             serial_disabled = True
-            # traceback.print_exc()
+            traceback.print_exc()
             print('Serial disabled.')
 
     def lock(self, key):
