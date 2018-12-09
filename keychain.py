@@ -36,14 +36,17 @@ def check_key():
 
 def list_keys():
     valid_keys = []
-    with open(home + '/.ssh/authorized_keys', 'r') as file:
-        keys = file.read().strip().split('\n')
+    if os.path.isfile(home + '/.ssh/authorized_keys'):
+        with open(home + '/.ssh/authorized_keys', 'r') as file:
+            keys = file.read().strip().split('\n')
 
-        for i in range(len(keys)):
-            key = keys[i]
+            for i in range(len(keys)):
+                key = keys[i]
 
-            if len(key.split()) == 6:
-                valid_keys.append(' '.join(key.split()[3:]))
+                if len(key.split()) == 6:
+                    valid_keys.append(' '.join(key.split()[3:]))
+    else:
+        open(home + '/.ssh/authorized_keys', 'w').close()
 
     return valid_keys
 
