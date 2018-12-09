@@ -14,6 +14,7 @@ andrew = serialgao.Andrewino('/dev/ttyACM2')
 def main():
     global locked
 
+    Console.clear()
     MenuFormatter.splash()
     keychain.load_key()
 
@@ -49,7 +50,8 @@ def main():
                     else:
                         andrew.lock(sha256frompubkey.sha256_fingerprint_from_pub_key(key[0][0]))
 
-                    Console.print('Chain has been %s' % 'LOCKED' if not locked else 'UNLOCKED', Colors.PURPLE_BOLD_BRIGHT)
+                    Console.print('Chain has been %s' % 'LOCKED' if not locked else 'UNLOCKED',
+                                  Colors.PURPLE_BOLD_BRIGHT)
                     Prompts.cn_prompt()
 
                 locked = andrew.status()

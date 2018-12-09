@@ -77,7 +77,7 @@ def add_key(key):
         dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'ADD-KEY')
         os.system(
             'echo \'command="python3 BlockChainChain/bcc_main.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
-            key, home))
+                key, home))
         return True
     else:
         return False
@@ -101,7 +101,7 @@ def revoke_key(key):
 def load_key(persist=False):
     old_time = time.time()
 
-    Console.print('\nRetrieving keys...\n', Colors.BLACK_BOLD)
+    Console.print('Retrieving keys...\n', Colors.BLACK_BOLD)
 
     keys = KeyScraper.get_key(bcc_main.user)
     current_keys = set(list_keys())
