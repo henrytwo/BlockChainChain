@@ -52,7 +52,11 @@ class Andrewino:
             # Is it locked?
             self.s.write(b'status')
 
-            return self.s.readline().decode().strip() == 'true'
+            meh = self.s.readline().decode().strip() == 'true'
+
+            print(meh)
+
+            return meh
         else:
             #print('STATUS! (SERIAL OFFLINE)')
             return locked

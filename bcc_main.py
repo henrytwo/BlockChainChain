@@ -37,7 +37,7 @@ def main():
 
     andrew = serialgao.Andrewino('/dev/ttyACM0')
 
-    locked = andrew.status()
+    #locked = andrew.status()
 
     Console.clear()
 
