@@ -4,7 +4,8 @@ import datetime
 from console import *
 
 data_colors = {
-    'lock/unlock': Colors.BLUE_BOLD_BRIGHT,
+    'lock': Colors.GREEN_BOLD,
+    'unlock': Colors.BLUE_BOLD_BRIGHT,
     'add-key': Colors.YELLOW_BOLD_BRIGHT,
     'revoke-key': Colors.BLACK_BOLD_BRIGHT,
     'login': Colors.CYAN_BOLD_BRIGHT,

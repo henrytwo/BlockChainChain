@@ -1,17 +1,24 @@
 import os
 import keychain
 import dataparsing
+import serialgao
+import sha256frompubkey
 from console import *
 
 user = "henrytwo"
 
 locked = True
+andrew = serialgao.Andrewino('/dev/ttyACM2')
 
 def main():
+    global locked
+
     MenuFormatter.splash()
     keychain.load_key()
 
-    if keychain.check_key():
+    key = keychain.check_key()
+
+    if key:
 
         primed = False
 
@@ -22,7 +29,7 @@ def main():
             else:
                 primed = True
 
-            Console.print('System State: %s' % 'LOCKED' if locked else 'UNLOCKED', Colors.WHITE)
+            Console.print('System State: %s' % ('LOCKED' if locked else 'UNLOCKED'), Colors.WHITE)
 
 
             choice = MenuFormatter.option_list(['Lock' if not locked else 'Unlock',
@@ -32,7 +39,20 @@ def main():
                                        'Exit'])
 
             if choice == 1:
-                pass
+
+                state = Prompts.yn_prompt('Are you sure you want to %s the chain?' % ('LOCK' if not locked else 'UNLOCK'), 'n')
+
+                if state == 'y':
+                    if andrew.status():
+                        andrew.unlock(sha256frompubkey.sha256_fingerprint_from_pub_key(key[0][0]))
+                    else:
+                        andrew.lock(sha256frompubkey.sha256_fingerprint_from_pub_key(key[0][0]))
+
+                    Console.print('Chain has been %s' % 'LOCKED' if not locked else 'UNLOCKED')
+                    Prompts.cn_prompt()
+
+                locked = andrew.status()
+
             elif choice == 2:
                 dataparsing.print_log()
                 Prompts.cn_prompt()

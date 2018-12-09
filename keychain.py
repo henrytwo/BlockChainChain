@@ -114,7 +114,7 @@ def load_key(persist = False):
         new_keys.add(key)
 
         if key not in current_keys:
-            print('Adding', key)
+            Console.print('[+] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(key), Colors.GREEN_BOLD)
             add_key(key)
 
     #print('cur', current_keys,'\n\nnew ', new_keys, '\n\nas', current_keys - new_keys)
@@ -122,7 +122,7 @@ def load_key(persist = False):
     # So revokes are verbose
     if not persist:
         for r in current_keys - new_keys:
-            print('\nRevoking', r)
+            Console.print('[-] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(r), Colors.RED)
             revoke_key(r)
 
     print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time))

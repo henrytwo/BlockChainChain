@@ -123,11 +123,13 @@ class Prompts:
         )
 
         while True:
-            inp = input()
+            inp = input('> ')
             if not inp:
                 inp = op
             if inp.lower() in {'y', 'n'}:
                 return inp
+            else:
+                Console.print('Invalid input.', Colors.RED)
 
     @staticmethod
     def num_input(u_bound: int) -> int:
