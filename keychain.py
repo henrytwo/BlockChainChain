@@ -7,6 +7,7 @@ import glob
 import traceback
 import dataparsing
 import sha256frompubkey
+import KeyScraper
 from os.path import expanduser
 
 home = expanduser("~")
@@ -102,25 +103,20 @@ def load_key(persist=False):
 
     Console.print('\nRetrieving keys...\n', Colors.BLACK_BOLD)
 
-    keys = glob.glob("/keybase/public/" + bcc_main.user + "/gatekeeper/*")
+    keys = KeyScraper.get_key(bcc_main.user)
     current_keys = set(list_keys())
-    new_keys = set()
 
     Console.print('Loading keys...', Colors.BLUE_BOLD)
     Console.print('%i key(s) loaded.\n' % len(keys), Colors.CYAN_BOLD)
 
     for key in keys:
-        key = open(key).read().strip()
-
-        new_keys.add(key)
-
         if key not in current_keys:
             Console.print('[+] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(key), Colors.GREEN_BOLD)
             add_key(key)
 
     # So revokes are verbose
     if not persist:
-        for r in current_keys - new_keys:
+        for r in current_keys - keys:
             Console.print('[-] ' + sha256frompubkey.sha256_fingerprint_from_pub_key(r), Colors.RED)
             revoke_key(r)
 
