@@ -182,7 +182,7 @@ class MenuFormatter:
         Console.print(
             'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
             Colors.RED_BOLD_BRIGHT)
-        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Sleeping Gao     ',
+        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao     ',
                       Colors.RED_BOLD)
 
     @staticmethod
