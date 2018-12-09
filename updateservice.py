@@ -2,6 +2,9 @@ import keychain
 import time
 
 while True:
-    keychain.load_key(True)
+    try:
+        keychain.load_key(True)
+    except:
+        pass
 
     time.sleep(5)
