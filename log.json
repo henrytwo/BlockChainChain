@@ -1,32 +1,92 @@
 [
     {
-        "key": "one",
-        "timestamp": "1",
-        "type": "lock/unlock",
-        "action": "heh"
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:44:51",
+        "type": "LOGIN"
     },
     {
-        "key": "two",
-        "timestamp": "2",
-        "type": "add-key",
-        "action": "heh"
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:45:23",
+        "type": "LOGIN"
     },
     {
-        "key": "three",
-        "timestamp": "3",
-        "type": "revoke-key",
-        "action": "heh"
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:45:43",
+        "type": "LOGIN"
     },
     {
-        "key": "four",
-        "timestamp": "4",
-        "type": "login",
-        "action": "heh"
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:46:01",
+        "type": "LOGIN"
     },
     {
-        "key": "five",
-        "timestamp": "5",
-        "type": "kick",
-        "action": "heh"
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:46:07",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:46:25",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:46:32",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:47:08",
+        "type": "LOGIN"
+    },
+    {
+        "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXAIepZD1RKYE6JhUHt2DY6yTJly2/IdOlDNp3FJnlmRxDlz10gycKzgqctpOR3IaRJ6VSnrgI5c1VbFY/md+Hc/Ufl0m83XcNZRx2A01dkTHYhyxb++bBKNXAy1atrqSi3o9kpPt52qr5AdjW1Tl4vIM1c1UXdKEL/1mtwW63/MURxyIlW/2eOdR9aY4svOeu1HCyTsaj5DwWTcNu2oZKNTNvOqGAsT74V+AH2kddBK/TanO0JZy1wx91L4hSbIjDymSHzn5X1JgVMScgVGU23IiBiIda4VF14MajTQMZkt9iWYbx4lX8rA+7f1WfY+vdlN2uJTiH90IfOxQ2Ea/3 henry@snowden",
+        "timestamp": "2018-12-08 21:47:25",
+        "type": "REVOKE-KEY"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:47:25",
+        "type": "KICK"
+    },
+    {
+        "key": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDXAIepZD1RKYE6JhUHt2DY6yTJly2/IdOlDNp3FJnlmRxDlz10gycKzgqctpOR3IaRJ6VSnrgI5c1VbFY/md+Hc/Ufl0m83XcNZRx2A01dkTHYhyxb++bBKNXAy1atrqSi3o9kpPt52qr5AdjW1Tl4vIM1c1UXdKEL/1mtwW63/MURxyIlW/2eOdR9aY4svOeu1HCyTsaj5DwWTcNu2oZKNTNvOqGAsT74V+AH2kddBK/TanO0JZy1wx91L4hSbIjDymSHzn5X1JgVMScgVGU23IiBiIda4VF14MajTQMZkt9iWYbx4lX8rA+7f1WfY+vdlN2uJTiH90IfOxQ2Ea/3 henry@snowden",
+        "timestamp": "2018-12-08 21:48:00",
+        "type": "ADD-KEY"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:00",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:12",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:16",
+        "type": "REVOKE-KEY"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:16",
+        "type": "KICK"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:22",
+        "type": "ADD-KEY"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:48:22",
+        "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "timestamp": "2018-12-08 21:49:54",
+        "type": "LOGIN"
     }
 ]

@@ -1,8 +1,5 @@
-import os
-import glob
 import keychain
-import threading
-import time
+import dataparsing
 from console import *
 
 user = "henrytwo"
@@ -18,6 +15,9 @@ def main():
         Console.print(
             '\nAccess denied! This key has been revoked.\nContact the owner securely over keybase for further instructions. (@%s)' % user,
             Colors.RED_BOLD)
+
+    dataparsing.print_log()
+
 
 if __name__ == '__main__':
     main()

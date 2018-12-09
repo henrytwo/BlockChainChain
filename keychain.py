@@ -5,6 +5,7 @@ import gatekeeper
 import time
 import glob
 import traceback
+import dataparsing
 import sha256frompubkey
 from os.path import expanduser
 
@@ -21,7 +22,16 @@ def check_key():
 
                 Console.print('SHA256 FINGERPRINT: %s' % raw_key, Colors.RED_BOLD)
 
-                return key_exists(raw_key)
+                authorized = key_exists(raw_key)
+
+                break
+
+        if authorized:
+            dataparsing.log(raw_key, 'LOGIN')
+        else:
+            dataparsing.log(raw_key, 'KICK')
+
+        return authorized
 
 
 def list_keys():
@@ -39,8 +49,6 @@ def list_keys():
 
 
 def key_exists(k):
-
-    print('Inspecting', k)
 
     keys = list_keys()
 
@@ -63,6 +71,7 @@ def key_exists(k):
 
 def add_key(key):
     if not key_exists(key):
+        dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'ADD-KEY')
         os.system(
             'echo \'command="python3 BlockChainChain/gatekeeper.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (key, home))
         return True
@@ -76,6 +85,7 @@ def revoke_key(key):
     if k:
         del k[0][k[1]]
 
+        dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'REVOKE-KEY')
         with open(home + '/.ssh/authorized_keys', 'w') as file:
             file.write('\n'.join(k[0]))
 
@@ -83,7 +93,7 @@ def revoke_key(key):
     else:
         return False
 
-def load_key():
+def load_key(persist = False):
 
     old_time = time.time()
 
@@ -109,9 +119,11 @@ def load_key():
 
     #print('cur', current_keys,'\n\nnew ', new_keys, '\n\nas', current_keys - new_keys)
 
-    for r in current_keys - new_keys:
-        print('\nRevoking', r)
-        revoke_key(r)
+    # So revokes are verbose
+    if not persist:
+        for r in current_keys - new_keys:
+            print('\nRevoking', r)
+            revoke_key(r)
 
     print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time))
 
