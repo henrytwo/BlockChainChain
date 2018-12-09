@@ -8,13 +8,13 @@ Servo servo;
 int lockLED = 2;
 int ulockLED = 3;
 String str = "";
-boolean help = false;
 
 //---------------- help list -----------------------------------------
 void printHelp(void){
   Serial.println();
   Serial.println("lock - Lock Device");
   Serial.println("unlock - Unlock Device");
+  Serial.println("status - Current Status Of Lock");
   }
 
 //---------------- setup ---------------------------------------------
@@ -46,6 +46,7 @@ void loop(){
       delay(1000);
       lcd.clear();
     }
+    
     else if (str == "unlock"){
       digitalWrite(ulockLED, HIGH);
       digitalWrite(lockLED, LOW);
@@ -54,6 +55,16 @@ void loop(){
       delay(1000);
       lcd.clear();
     }
+    
+    else if (str == "status"){
+      if (digitalRead(lockLED) == HIGH){
+        Serial.println("true");  
+      }
+      else {
+        Serial.println("false");  
+      }
+    }
+    
     else {
       lcd.setCursor(0,0);
       lcd.print("Invalid");
