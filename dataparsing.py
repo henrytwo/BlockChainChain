@@ -10,6 +10,10 @@ data_colors = {
 }
 
 
+def log(key: str, timestamp: str, type: str, action: str):
+    pass
+
+
 def print_log():
     with open('log.json', mode='r+', encoding='utf-8') as f:
         data = json.load(f)
