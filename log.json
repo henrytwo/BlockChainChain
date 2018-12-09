@@ -1,0 +1,32 @@
+[
+    {
+        "key": "one",
+        "timestamp": "1",
+        "type": "lock/unlock",
+        "action": "heh"
+    },
+    {
+        "key": "two",
+        "timestamp": "2",
+        "type": "add-key",
+        "action": "heh"
+    },
+    {
+        "key": "three",
+        "timestamp": "3",
+        "type": "revoke-key",
+        "action": "heh"
+    },
+    {
+        "key": "four",
+        "timestamp": "4",
+        "type": "login",
+        "action": "heh"
+    },
+    {
+        "key": "five",
+        "timestamp": "5",
+        "type": "kick",
+        "action": "heh"
+    }
+]

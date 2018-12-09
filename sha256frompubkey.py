@@ -17,7 +17,6 @@ import sys
 
 
 def sha256_fingerprint_from_pub_key(data):
-
     try:
         data = data.strip()
 
@@ -37,6 +36,7 @@ def sha256_fingerprint_from_pub_key(data):
         return "SHA256:" + encoded.decode('utf-8')
     except:
         return "Invalid SSH Key"
+
 
 def main():
     print(sha256_fingerprint_from_pub_key(sys.argv[1]))

@@ -1,5 +1,6 @@
 from typing import *
 
+
 class Colors:
     RESET = "\033[0m"
 
@@ -94,34 +95,7 @@ class Console:
     def print(string: str, col: str = Colors.RESET):
         print(Console.color(string, col))
 
-    @staticmethod
-    def splash():
-        Console.print(
-            "        _____  _            _     _____ _           _        _____ _           _\n" +
-            "        |  _ \| |          | |   / ____| |         (_)      / ____| |         (_)\n" +
-            "        | |_) | | ___   ___| | _| |    | |__   __ _ _ _ __ | |    | |__   __ _ _ _ __\n" +
-            "        |  _ <| |/ _ \ / __| |/ / |    | '_ \ / _` | | '_ \| |    | '_ \ / _` | | '_ \\\n" +
-            "        | |_) | | (_) | (__|   <| |____| | | | (_| | | | | | |____| | | | (_| | | | | |\n" +
-            "        |____/|_|\___/ \___|_|\_\\\_____|_| |_|\__,_|_|_| |_|\_____|_| |_|\__,_|_|_| |_|\n",
-            Colors.BLACK_BOLD)
 
-        Console.print(
-            "               _,aaaaaaaaaaaaaaaaaaa,_                _,aaaaaaaaaaaaaaaaaaa,_\n" +
-            "              ,P'                     'Y,            ,P'                     'Y,\n" +
-            "             d'    ,aaaaaaaaaaaaaaa,    `b          d'    ,aaaaaaaaaaaaaaa,    `b\n" +
-            "            d'   ,d'            ,aaabaaaa8aaaaaaaaaa8aaaadaaa,            'b,   `b\n" +
-            "            I    I              I                            I              I    I\n" +
-            "            Y,   `Y,            `aaaaaaaaaaaaaaaaaaaaaaaaaaaa'            ,P'   ,P\n" +
-            "             Y,   `baaaaaaaaaaaaaaad'   ,P          Y,   `baaaaaaaaaaaaaad'   ,P\n" +
-            "              `b,                     ,d'            `b,                     ,d'\n" +
-            "                `baaaaaaaaaaaaaaaaaaad'                `baaaaaaaaaaaaaaaaaaad'\n",
-            Colors.BLACK_BOLD_BRIGHT)
-
-        Console.print(
-            'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
-            Colors.RED_BOLD_BRIGHT)
-        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Sleeping Gao     ',
-                      Colors.RED_BOLD)
 
 
 class Prompts:
@@ -177,11 +151,40 @@ class Prompts:
 
 class MenuFormatter:
     @staticmethod
+    def splash():
+        Console.print(
+            "        _____  _            _     _____ _           _        _____ _           _\n" +
+            "        |  _ \| |          | |   / ____| |         (_)      / ____| |         (_)\n" +
+            "        | |_) | | ___   ___| | _| |    | |__   __ _ _ _ __ | |    | |__   __ _ _ _ __\n" +
+            "        |  _ <| |/ _ \ / __| |/ / |    | '_ \ / _` | | '_ \| |    | '_ \ / _` | | '_ \\\n" +
+            "        | |_) | | (_) | (__|   <| |____| | | | (_| | | | | | |____| | | | (_| | | | | |\n" +
+            "        |____/|_|\___/ \___|_|\_\\\_____|_| |_|\__,_|_|_| |_|\_____|_| |_|\__,_|_|_| |_|\n",
+            Colors.BLACK_BOLD)
+
+        Console.print(
+            "               _,aaaaaaaaaaaaaaaaaaa,_                _,aaaaaaaaaaaaaaaaaaa,_\n" +
+            "              ,P'                     'Y,            ,P'                     'Y,\n" +
+            "             d'    ,aaaaaaaaaaaaaaa,    `b          d'    ,aaaaaaaaaaaaaaa,    `b\n" +
+            "            d'   ,d'            ,aaabaaaa8aaaaaaaaaa8aaaadaaa,            'b,   `b\n" +
+            "            I    I              I                            I              I    I\n" +
+            "            Y,   `Y,            `aaaaaaaaaaaaaaaaaaaaaaaaaaaa'            ,P'   ,P\n" +
+            "             Y,   `baaaaaaaaaaaaaaad'   ,P          Y,   `baaaaaaaaaaaaaad'   ,P\n" +
+            "              `b,                     ,d'            `b,                     ,d'\n" +
+            "                `baaaaaaaaaaaaaaaaaaad'                `baaaaaaaaaaaaaaaaaaad'\n",
+            Colors.BLACK_BOLD_BRIGHT)
+
+        Console.print(
+            'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
+            Colors.RED_BOLD_BRIGHT)
+        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Sleeping Gao     ',
+                      Colors.RED_BOLD)
+
+    @staticmethod
     def option_list(options: Union[List[str], Dict[str, str]]) -> int:
         if type(options) is list:
             options = {x: Colors.BLACK_BOLD for x in options}
 
-        Console.print(f'╔═══╦{"═"*15}╗', Colors.BLACK_BOLD)
+        Console.print(f'╔═══╦{"═" * 15}╗', Colors.BLACK_BOLD)
         for i, (option, col) in enumerate(options.items(), 1):
             Console.print(f'║ {i} ║ {option:<13} ║', col)
         Console.print(f'╚═══╩{"═" * 15}╝', Colors.BLACK_BOLD)

@@ -7,7 +7,9 @@ import glob
 import traceback
 import sha256frompubkey
 from os.path import expanduser
+
 home = expanduser("~")
+
 
 def check_key():
     with open('/var/log/auth.log') as file:
