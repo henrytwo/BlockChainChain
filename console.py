@@ -85,10 +85,7 @@ class Colors:
 class Console:
     @staticmethod
     def clear():
-        pass
-        #print('\033[H\033[2J')
-        #print('\033[H\033[2J')
-        #print('\033[H\033[2J')
+        print('\033[H\033[2J')
 
     @staticmethod
     def color(string: str, col: str) -> str:
@@ -111,6 +108,7 @@ class Prompts:
     def cn_prompt():
         Console.print('Press ENTER to continue...', Colors.RED)
         input()
+        Console.clear()
 
     @staticmethod
     def yn_prompt(string: str, op: str):
@@ -183,8 +181,10 @@ class MenuFormatter:
         Console.print(
             'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
             Colors.RED_BOLD_BRIGHT)
-        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao     \n',
+        Console.print('         Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao    \n',
                       Colors.RED_BOLD)
+
+        Prompts.cn_prompt()
 
     @staticmethod
     def option_list(options: Union[List[str], Dict[str, str]]) -> int:

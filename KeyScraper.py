@@ -4,6 +4,7 @@ import sha256frompubkey
 
 keynames = {}
 
+
 def get_key(user):
     global keynames
 
