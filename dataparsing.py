@@ -1,6 +1,7 @@
 import json
 import time
 import datetime
+import KeyScraper
 from console import *
 
 data_colors = {
@@ -18,6 +19,7 @@ def log(key: str, typ: str):
         data = json.load(f)
         data.append({
             "key": key,
+            "keyname": KeyScraper.keynames[key],
             "timestamp": datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S'),
             "type": typ
         })
@@ -39,13 +41,13 @@ def print_log():
         data = json.load(f)
 
     Console.print('BLOCKCHAINCHAIN SYSTEM LOG')
-    Console.print(f'╔═{"═" * 50}═╦═{"═" * 19}═╦═{"═" * 12}═╗', Colors.BLACK_BOLD)
-    Console.print(f'║ {"Key":<50} ║ {"Timestamp":19} ║ {"Type":12} ║', Colors.BLACK_BOLD)
-    Console.print(f'╠═{"═" * 50}═╬═{"═" * 19}═╬═{"═" * 12}═╣', Colors.BLACK_BOLD)
+    Console.print(f'╔═{"═" * 50}═╦═{"═" * 19}═╦═{"═" * 19}═╦═{"═" * 12}═╗', Colors.BLACK_BOLD)
+    Console.print(f'║ {"Key":<50} ║ {"Key File":19} ║ {"Timestamp":19} ║ {"Type":12} ║', Colors.BLACK_BOLD)
+    Console.print(f'╠═{"═" * 50}═╬═{"═" * 19}═╬═{"═" * 19}═╬═{"═" * 12}═╣', Colors.BLACK_BOLD)
     for t in data:
-        Console.print(f'║ {t["key"]:<50} ║ {t["timestamp"].upper():19} ║ {t["type"].upper():12} ║',
+        Console.print(f'║ {t["key"]:<50} ║ {t["keyname"]:19} ║ {t["timestamp"].upper():19} ║ {t["type"].upper():12} ║',
                       data_colors[t['type'].lower()])
-    Console.print(f'╚═{"═" * 50}═╩═{"═" * 19}═╩═{"═" * 12}═╝', Colors.BLACK_BOLD)
+    Console.print(f'╚═{"═" * 50}═╩═{"═" * 19}═╩═{"═" * 19}═╩═{"═" * 12}═╝', Colors.BLACK_BOLD)
     "╚═══╩═══╩═══╝"
 
 

@@ -29,7 +29,7 @@ class Andrewino:
             self.s.write(b'lock')
         else:
             locked = True
-            print('LOCK! (SERIAL OFFLINE)')
+            #print('LOCK! (SERIAL OFFLINE)')
 
     def unlock(self, key):
         global locked
@@ -40,7 +40,7 @@ class Andrewino:
             self.s.write(b'unlock')
         else:
             locked = False
-            print('LOCK! (SERIAL OFFLINE)')
+            #print('LOCK! (SERIAL OFFLINE)')
 
     def status(self):
         global locked
@@ -51,5 +51,5 @@ class Andrewino:
 
             return self.s.readline().decode().strip() == 'true'
         else:
-            print('STATUS! (SERIAL OFFLINE)')
+            #print('STATUS! (SERIAL OFFLINE)')
             return locked

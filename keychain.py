@@ -13,7 +13,7 @@ from os.path import expanduser
 home = expanduser("~")
 
 
-def check_key():
+def check_key(primed):
     with open('/var/log/auth.log') as file:
         log = file.read().strip().split('\n')[::-1]
 
@@ -21,16 +21,17 @@ def check_key():
             if 'RSA SHA256' in line:
                 raw_key = line.split()[-1]
 
-                Console.print('SHA256 FINGERPRINT: %s' % raw_key, Colors.RED_BOLD)
+                Console.print('SSH KEY FINGERPRINT: %s' % raw_key, Colors.RED_BOLD)
 
                 authorized = key_exists(raw_key)
 
                 break
 
-        if authorized:
-            dataparsing.log(raw_key, 'LOGIN')
-        else:
-            dataparsing.log(raw_key, 'KICK')
+        if not primed:
+            if authorized:
+                dataparsing.log(raw_key, 'LOGIN')
+            else:
+                dataparsing.log(raw_key, 'KICK')
 
         return authorized
 
@@ -97,11 +98,19 @@ def revoke_key(key):
     else:
         return False
 
+def get_name_from_key(key):
+    keys = glob.glob("/keybase/public/" + bcc_main.user + "/gatekeeper/*")
+
+    for f in keys:
+        k = open(f).read().strip()
+
+        if key.strip() == sha256frompubkey.sha256_fingerprint_from_pub_key(k):
+            return f.split('/')[-1]
 
 def load_key(persist=False):
     old_time = time.time()
 
-    Console.print('\nRetrieving keys...\n', Colors.BLACK_BOLD)
+    Console.print('Retrieving keys...\n', Colors.BLACK_BOLD)
 
     keys = KeyScraper.get_key(bcc_main.user)
     current_keys = set(list_keys())

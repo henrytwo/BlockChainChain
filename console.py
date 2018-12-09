@@ -85,7 +85,10 @@ class Colors:
 class Console:
     @staticmethod
     def clear():
-        print('\033[H\033[2J')
+        pass
+        #print('\033[H\033[2J')
+        #print('\033[H\033[2J')
+        #print('\033[H\033[2J')
 
     @staticmethod
     def color(string: str, col: str) -> str:
@@ -135,7 +138,7 @@ class Prompts:
 
         while True:
             try:
-                x = int(input())
+                x = int(input('> '))
             except ValueError:
                 Console.print('Invalid input.', Colors.RED)
                 continue
@@ -180,7 +183,7 @@ class MenuFormatter:
         Console.print(
             'Super secret block chain based chain with chains and blocks and crypto and blocks. Also chains.',
             Colors.RED_BOLD_BRIGHT)
-        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao     ',
+        Console.print('     Developed by: Henry Tu, Yuan Song (Ryan) Zhang, Syed Safwaan, and Andrew Gao     \n',
                       Colors.RED_BOLD)
 
     @staticmethod

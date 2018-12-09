@@ -1,12 +1,17 @@
 import urllib.request
 import urllib
+import sha256frompubkey
+
+keynames = {}
 
 def get_key(user):
+    global keynames
+
     new_keys = set()
 
-    response = urllib.request.urlopen('https://keybase.pub/'+user)
+    response = urllib.request.urlopen('https://keybase.pub/'+user+'/gatekeeper')
     if response.getcode() == 200:
-        data = [x for x in str(response.read()).split("\\n") if "<td class=\"name-col\"><a href=\"https://keybase.pub/henrytwo/" in x]
+        data = [x for x in str(response.read()).split("\\n") if "<td class=\"name-col\"><a href=\"https://keybase.pub/%s/" % user in x]
         files = []
         for file in data:
             if "class=\"file\"" in file:
@@ -15,10 +20,13 @@ def get_key(user):
                         files.append(word)
                         break
         for key in files:
-            print("Checking file:", "https://"+user + ".keybase.pub/"+key.split("/")[-1]+"?dl=1")
-            data = urllib.request.urlopen("https://"+user + ".keybase.pub/"+key.split("/")[-1]+"?dl=1")
+            print("Checking file:", "https://"+user + ".keybase.pub/gatekeeper/"+key.split("/")[-1]+"?dl=1")
+            data = urllib.request.urlopen("https://"+user + ".keybase.pub/gatekeeper/"+key.split("/")[-1]+"?dl=1")
             if response.getcode() == 200:
-                new_keys.add(str(data.read().decode('utf-8')))
+                k = str(data.read().decode('utf-8')).strip()
+                new_keys.add(k)
+
+                keynames[sha256frompubkey.sha256_fingerprint_from_pub_key(k)] = key.split("/")[-1]
 
     return new_keys
 
