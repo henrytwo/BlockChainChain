@@ -5,7 +5,9 @@ import subprocess
 import traceback
 import sha256frompubkey
 from os.path import expanduser
+
 home = expanduser("~")
+
 
 def check_key():
     with open('/var/log/auth.log') as file:
@@ -47,7 +49,7 @@ def key_exists(k, raw=False):
                 else:
                     reference_key = key
 
-                #print('A:' + k, 'B:' + reference_key)
+                # print('A:' + k, 'B:' + reference_key)
 
                 if len(key.split()) == 6 and k == reference_key:
                     return [keys, i]

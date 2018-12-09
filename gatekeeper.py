@@ -7,18 +7,20 @@ from console import *
 
 user = "henrytwo"
 
+
 def main():
-    Console.splash()
+    MenuFormatter.splash()
     load_key()
 
     if keyrunner.check_key():
         Console.print('wooo u auth', Colors.YELLOW)
     else:
-        Console.print('\nAccess denied! This key has been revoked.\nContact the owner securely over keybase for further instructions. (@%s)' % user, Colors.RED_BOLD)
+        Console.print(
+            '\nAccess denied! This key has been revoked.\nContact the owner securely over keybase for further instructions. (@%s)' % user,
+            Colors.RED_BOLD)
 
 
 def load_key():
-
     old_time = time.time()
 
     Console.print('\nRetrieving keys...')
@@ -42,9 +44,7 @@ def load_key():
     print('Keys updated!\n\nCompleted update in %5.5f seconds\n' % (time.time() - old_time))
 
 
-
 if __name__ == '__main__':
     main()
 
-
-#hello
+# hello

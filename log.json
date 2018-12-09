@@ -1,0 +1,32 @@
+[
+  {
+    "type": "lock/unlock",
+    "timestamp": "nov 1",
+    "key": "gei",
+    "action": "Cool stuff"
+  },
+  {
+    "type": "add-key",
+    "timestamp": "nov 2",
+    "key": "les",
+    "action": "amazing stuff"
+  },
+  {
+    "type": "revoke-key",
+    "timestamp": "nov 3",
+    "key": "quad",
+    "action": "Cool stuff"
+  },
+  {
+    "type": "login",
+    "timestamp": "nov 4",
+    "key": "null",
+    "action": "Cool stuff"
+  },
+  {
+    "type": "kick",
+    "timestamp": "nov 5",
+    "key": "kys henry",
+    "action": "Cool stuff"
+  }
+]
