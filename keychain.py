@@ -77,7 +77,7 @@ def add_key(key):
     if not key_exists(key):
         dataparsing.log(sha256frompubkey.sha256_fingerprint_from_pub_key(key), 'ADD-KEY')
         os.system(
-            'echo \'command="python3 BlockChainChain/bcc_main.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
+            'echo \'command="python3.7 BlockChainChain/bcc_main.py $SSH_ORIGINAL_COMMAND",no-port-forwarding,no-x11-forwarding,no-agent-forwarding %s\' >> %s/.ssh/authorized_keys' % (
                 key, home))
         return True
     else:

@@ -28,5 +28,11 @@
         "keyname": "id_rsa.pub",
         "timestamp": "2018-12-09 11:47:26",
         "type": "LOGIN"
+    },
+    {
+        "key": "SHA256:Z8Tf4qiG9ie1k9gkkoIWmwrPCz5RY5V3cyGrI1ZMgwM",
+        "keyname": "id_rsa.pub",
+        "timestamp": "2018-12-09 11:48:19",
+        "type": "LOGIN"
     }
 ]
