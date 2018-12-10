@@ -11,6 +11,7 @@ String str = "";
 int button = 12;
 int buttonState = 0;
 boolean overRide = false;
+boolean meh = false;
 
 //---------------- help list -----------------------------------------
 void printHelp(void){
@@ -33,7 +34,7 @@ void setup(){
   delay(500);
   lcd.clear();
   Serial.flush();
-  printHelp();
+  //printHelp();
 }
 
 //--------------- loop ----------------------------------------------- 
@@ -41,29 +42,30 @@ void loop(){
   buttonState = digitalRead(button);
   
   if (buttonState == HIGH){
-      if (overRide == false){
+      if (overRide == false && meh == true){
+        meh = false;
         digitalWrite(lockLED, HIGH);
         digitalWrite(ulockLED, LOW);
         lcd.setCursor(0,0);
         lcd.print("Device Status:");
         lcd.setCursor(0,1);
         lcd.print("Locked");
-        servo.write(0);
+        servo.write(30);
+        delay(1000);
+        lcd.clear();
+      } else {
+        meh = true;
+        digitalWrite(ulockLED, HIGH);
+        digitalWrite(lockLED, LOW);
+        lcd.setCursor(0,0);
+        lcd.print("Device Status:");
+        lcd.setCursor(0,1);
+        lcd.print("Unlocked");
+        servo.write(80);
         delay(1000);
         lcd.clear();
       }
   }
-  else if (buttonState == LOW){
-      digitalWrite(ulockLED, HIGH);
-      digitalWrite(lockLED, LOW);
-      lcd.setCursor(0,0);
-      lcd.print("Device Status:");
-      lcd.setCursor(0,1);
-      lcd.print("Unlocked");
-      servo.write(180);
-      delay(1000);
-      lcd.clear();
-  }    
   
   if (Serial.available() > 0){
     str = Serial.readStringUntil('\n');
@@ -77,7 +79,7 @@ void loop(){
       lcd.print("Device Status:");
       lcd.setCursor(0,1);
       lcd.print("Locked");
-      servo.write(0);
+      servo.write(30);
       delay(1000);
       lcd.clear();
     }
@@ -90,7 +92,7 @@ void loop(){
       lcd.print("Device Status:");
       lcd.setCursor(0,1);
       lcd.print("Unlocked");
-      servo.write(180);
+      servo.write(80);
       delay(1000);
       lcd.clear();
     }
@@ -105,6 +107,7 @@ void loop(){
     }
     
     else {
+      Serial.println(str);
       lcd.setCursor(0,0);
       lcd.print("Invalid");
       lcd.setCursor(0,1);
